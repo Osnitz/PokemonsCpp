@@ -8,19 +8,16 @@
 #include <vector>
 #include <sstream>
 
-
-#include "SetOfPokemon.h"
-
-
 class Pokeball: SetOfPokemon {
 private:
     std::vector<Pokemon *> pokemonInPokeball;
 public:
     Pokeball();
-    ~Pokeball();
+    ~Pokeball() override;
     Pokemon getPokemonById(int id) override;
     Pokemon getPokemonByName(const string &name) override;
-    void removeFromPokeballByName(const string &name);
+    void removeAllFromPokeball();
+    void displayPokeballList()const;
 };
 #endif //POKEBALL_H
 

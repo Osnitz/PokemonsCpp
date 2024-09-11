@@ -22,7 +22,7 @@ Pokemon::Pokemon(const Pokemon& other)
 
 // Destructeur
 Pokemon::~Pokemon() {
-    std::cout << "Ici le destructeur de pokemon" << std::endl;
+    std::cout << "Ici le destructeur de pokemon appelé pour " << name << std::endl;
 }
 
 void Pokemon::displayInfo()const{

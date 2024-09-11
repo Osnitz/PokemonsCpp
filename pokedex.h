@@ -6,8 +6,6 @@
 #define POKEDEX_H
 
 #include <fstream>
-#include <sstream>
-
 #include "SetOfPokemon.h"
 
 
@@ -16,8 +14,9 @@ using std::string;
 class Pokedex: public SetOfPokemon {
 private:
     static Pokedex* instance;
-    Pokedex(const string &fileName);
-    ~Pokedex();
+
+    explicit Pokedex(const string &fileName);
+    ~Pokedex() override;
 
 protected:
 

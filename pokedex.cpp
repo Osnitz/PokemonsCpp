@@ -4,12 +4,13 @@
 
 #include "pokedex.h"
 #include <fstream>
+#include <sstream>
 
 //Pokemon charizard(1, "Charizard",100,115,50,1);
 
 Pokedex* Pokedex::instance = nullptr;
 
-Pokedex::Pokedex(const string &fileName) : SetOfPokemon::SetOfPokemon() {
+Pokedex::Pokedex(const string &fileName){
     std::cout<< "Pokedex constructor" << std::endl;
     std::ifstream file(fileName); // Ouvre le file
     if (!file.is_open()) { // Vérifie si le file est bien ouvert
@@ -53,7 +54,7 @@ Pokedex::Pokedex(const string &fileName) : SetOfPokemon::SetOfPokemon() {
 }
 
 Pokedex::~Pokedex() {
-    //std::cout << "Ici le destructeur de pokedex" << std::endl;
+    std::cout << "Ici le destructeur de pokedex" << std::endl;
 }
 
 

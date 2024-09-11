@@ -3,45 +3,63 @@
 //
 
 #include "Pokeball.h"
+#include "pokedex.h"
+
+Pokeball::Pokeball() {
+    std::cout << "Pokeball constructor" << std::endl;
+};
+Pokeball::~Pokeball() {
+    std::cout << "Pokeball destructor" << std::endl;
+    for (auto pokemon : pokemonInPokeball) {
+        delete pokemon;  // Libère chaque Pokémon alloué dynamiquement
+    }
+};
 
 Pokemon Pokeball::getPokemonById(int id) {
-    int index = findById(id);
-    if (index != -1) {
-
-        Pokemon pokemon (*pokemonList.at(index));
-        pokemonInPokeball.push_back(&pokemon);
-
-        std::cout << pokemon.getName() << "Stocké dans la pokeball" << std::endl;
-        return pokemon;  // Renvoie une copie du Pokémon
-    } else {
-        throw std::invalid_argument("Le Pokémon avec l'ID " + std::to_string(id) + " n'existe pas dans le Pokedex.");
-    }
+    Pokedex* pokedex = Pokedex::GetInstance("../ressources/pokedex.csv");
+    auto pokemon = new Pokemon(pokedex->getPokemonById(id));
+    pokemonInPokeball.emplace_back(pokemon);  // Ajoute le pointeur au vecteur
+    std::cout << pokemon->getName() << " d'identifiant : " << pokemon->getId() << ", a été ajouté à la pokeball" << std::endl;
+    return *pokemon;  // Renvoie une copie du Pokémon
 }
+
 
 Pokemon Pokeball::getPokemonByName(const string& name) {
-    int index = findByName(name);
-    if (index != -1) {
-        Pokemon pokemon (*pokemonList.at(index));
-        pokemonInPokeball.push_back(&pokemon);
-        std::cout << name << "Stocké dans la pokeball" << std::endl;
-        return pokemon;  // Renvoie une copie du Pokémon
-    } else {
-        throw std::invalid_argument("Le Pokémon avec le nom " + name + " n'existe pas dans le Pokedex.");
-    }
+    Pokedex* pokedex = Pokedex::GetInstance("../ressources/pokedex.csv");
+    auto pokemon = new Pokemon(pokedex->getPokemonByName(name));  // Alloue sur le tas
+    pokemonInPokeball.emplace_back(pokemon);  // Ajoute le pointeur au vecteur
+    std::cout << pokemon->getName() << " a été ajouté à la pokeball" << std::endl;
+    return *pokemon;  // Renvoie une copie du Pokémon
 }
 
-void Pokeball::removeFromPokeballByName(const string &name) {
+void Pokeball::removeAllFromPokeball() {
     for (size_t i = 0; i < pokemonInPokeball.size(); ++i) {
-        if (pokemonInPokeball[i]->getName() == name) {
-            std::cout << name << " retiré de la Pokeball" << std::endl;
+        pokemonInPokeball[i];
+        std::cout << pokemonInPokeball[i]->getName() << " retiré de la Pokeball" << std::endl;
 
-            delete pokemonInPokeball[i];  // Libère la mémoire si nécessaire
-            pokemonInPokeball.erase(pokemonInPokeball.begin() + i);  // Supprime le Pokémon du vecteur
-            return;  // On arrête après avoir trouvé et supprimé le Pokémon
-        }
+        delete pokemonInPokeball[i];  // Libère la mémoire du Pokémon
+        pokemonInPokeball.erase(pokemonInPokeball.begin() + i);  // Supprime du vecteur
+
+        --i;  // Pour compenser la suppression d'un élément et éviter de sauter l'élément suivant
     }
-
-    // Si aucun Pokémon avec ce nom n'a été trouvé
-    std::cerr << "Le Pokémon avec le nom " << name << " n'existe pas dans la Pokeball." << std::endl;
 }
 
+
+/*void Pokeball::removeFromPokeballByIndex(int index) {
+    if (index < 0 || index >= pokemonInPokeball.size()) {
+        std::cerr << "Index hors limites" << std::endl;
+        return;
+    }
+    string name = pokemonInPokeball[index]->getName();
+    delete pokemonInPokeball[index];  // Libère la mémoire du Pokémon
+    pokemonInPokeball.erase(pokemonInPokeball.begin() + index);  // Supprime du vecteur
+    std::cout << name << " retiré de la Pokeball" << std::endl;
+}*/
+
+
+void Pokeball::displayPokeballList() const {
+    std::cout << "Liste des Pokémon dans la pokeball:" << std::endl;
+    for (size_t i = 0; i < pokemonInPokeball.size(); ++i) {
+        std::cout << i << " : " << pokemonInPokeball[i]->getName() << std::endl;
+    }
+}
