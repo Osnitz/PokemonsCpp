@@ -1,0 +1,14 @@
+# ninja log v6
+697	888	1725883038378120247	PokemonIS	4db96eea81bf453
+5	1131	1726065752010761957	CMakeFiles/Exercices.dir/pokedex.cpp.o	4edd863d032348d4
+7	1011	1726057308515794081	CMakeFiles/Exercices.dir/pokemon.cpp.o	725ebb97063f21c6
+5	858	1726065752010761957	CMakeFiles/Exercices.dir/SetOfPokemon.cpp.o	114ae61810e122d9
+803	910	1726065791676153103	Exercices	380f7f583793c359
+5	722	1726065802311257241	CMakeFiles/Exercices.dir/main.cpp.o	95fe948c28290146
+2	30	1726066211905129596	build.ninja	cb3c0e44551b9c6
+2	803	1726065790875145248	CMakeFiles/Exercices.dir/Pokeball.cpp.o	7a7c4b5b63bd3e99
+7	1831	1726066216303170327	CMakeFiles/Exercices.dir/pokemon.cpp.o	27c12dba7c2cb0df
+9	1987	1726066216304170337	CMakeFiles/Exercices.dir/SetOfPokemon.cpp.o	8d9519910401c43
+5	2102	1726066216300170300	CMakeFiles/Exercices.dir/main.cpp.o	a86326afc1a8c922
+14	2298	1726066216309170383	CMakeFiles/Exercices.dir/Pokeball.cpp.o	6082146197aefd3b
+11	2409	1726066216306170355	CMakeFiles/Exercices.dir/pokedex.cpp.o	c1e64df4c1db53b6
