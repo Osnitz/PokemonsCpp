@@ -18,29 +18,48 @@ int main(){
     std::cout <<"Nombre de Pokemon en memoire : " << Pokemon::getNumberOfPokemon() << std::endl;*/
 
     // Utilisation du Singleton pour obtenir l'instance du Pokedex
-    /*Pokedex* pokedex = Pokedex::GetInstance("../ressources/pokedex.csv");
+    Pokedex* pokedex = Pokedex::GetInstance("../ressources/pokedex.csv");
 
-    /*Pokemon pikachu = pokedex -> getPokemonByName("Pikachu");
-    pikachu.displayInfo();*/
+    /*Pokemon* pikachu = pokedex -> addPokemon("Pikachu");
+    pikachu->displayInfo();*/
 
-    /*Pokemon bulbasaur = pokedex -> getPokemonById(1);
-    bulbasaur.displayInfo();*/
+    /*Pokemon* bulbasaur = pokedex -> addPokemon(1);
+    bulbasaur->displayInfo();*/
 
     Pokeball pokeball;
-    /*pokeball.getPokemonById(1);
+    pokeball.addPokemon(1);
+    pokeball.addPokemon(12);
+    pokeball.addPokemon(3);
+    pokeball.addPokemon(4);
+    pokeball.addPokemon(115);
+    pokeball.addPokemon(28);
+    pokeball.addPokemon(30);
+    pokeball.addPokemon(73);
+    pokeball.addPokemon(617);
+    pokeball.addPokemon(111);
+    ::cout << "Nombre de Pokémon en mémoire : " << Pokemon::getNumberOfPokemon() << std::endl;
     pokeball.displayPokeballList();
-    pokeball.getPokemonByName("Pikachu");
-    pokeball.displayPokeballList();
-    pokeball.removeFromPokeballByIndex(0);
-    pokeball.displayPokeballList();*/
+    ::cout<< "------------------------------------------------"<< endl;
+    //pokeball.displayPokeballList();
+    //pokeball.aPokemon("Pikachu");
+    //pokeball.displayPokeballList();
+    //::cout << "Nombre de Pokémon en mémoire : " << Pokemon::getNumberOfPokemon() << std::endl;
+    //pokeball.removeOneFromPokeball(1);
+    //pokeball.displayPokeballList();
 
-    vector<int> ids = {1,2,3,4,5,6};
-    vector<string> names ={"Bulbasaur","Charmander","Pikachu"};
-    PokemonParty party(names, &pokeball);
+    /*vector<int> ids = {1,2,3,4,5,6};
+    vector<string> names ={"Bulbasaur","Charmander","Pikachu"};*/
+    PokemonParty party(&pokeball);
+    ::cout << "Nombre de Pokémon en mémoire : " << Pokemon::getNumberOfPokemon() << std::endl;
     party.displayParty();
     pokeball.displayPokeballList();
-
-
+    ::cout<< "-------------------- ADD POKEMON TO PARTY ----------------------------"<< endl;
+    party.addPokemon(&pokeball);
+    party.displayParty();
+    ::cout<< "------------------------------------------------"<< endl;
+    pokeball.displayPokeballList();
+    ::cout<< "------------------------------------------------"<< endl;
     ::cout << "Nombre de Pokémon en mémoire : " << Pokemon::getNumberOfPokemon() << std::endl;
+
     return 0;
 }

@@ -14,8 +14,8 @@
 class SetOfPokemon {
 protected:
     std::vector<Pokemon *> pokemonList;// Vecteur de Pokemon
-    int findByName(const string& name);
-    int findById(int id);
+    int findPokemon(const string& name) const;
+    int findPokemon(int id) const;
 public:
     SetOfPokemon();
 
@@ -23,10 +23,10 @@ public:
     virtual ~SetOfPokemon();
 
     // Méthode abstraite pour récuperer un pokéon via son index
-    virtual Pokemon getPokemonById(int id) = 0;
+    virtual Pokemon* getPokemon(int id) = 0;
 
     // Méthode abstraite pour récupérer un Pokémon par son nom
-    virtual Pokemon getPokemonByName(const string &name) = 0;
+    virtual Pokemon* getPokemon(const string &name) = 0;
 
 
     // Méthode concrète d'affichage de la liste des Pokémon

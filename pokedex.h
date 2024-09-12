@@ -22,8 +22,8 @@ protected:
 
 public:
     static Pokedex *GetInstance(const std::string& value);
-    Pokemon getPokemonById(int id) override;
-    Pokemon getPokemonByName(const string &name) override;
+    Pokemon* getPokemon(int id) override;
+    Pokemon* getPokemon(const string &name) override;
 };
 
 #endif //POKEDEX_H

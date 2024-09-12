@@ -10,14 +10,18 @@
 
 class Pokeball: SetOfPokemon {
 private:
-    std::vector<Pokemon *> pokemonInPokeball;
 public:
     Pokeball();
     ~Pokeball() override;
-    Pokemon getPokemonById(int id) override;
-    Pokemon getPokemonByName(const string &name) override;
+    Pokemon* getPokemon(int id) override;
+    Pokemon* getPokemon(const string &name) override;
     void removeAllFromPokeball();
     void displayPokeballList()const;
+    void removeOneFromPokeball(const string& name);
+    void removeOneFromPokeball(int id);
+    std::vector<std::string> selectInPokeball();
+    void addPokemon(const string& name);
+    void addPokemon(int id);
 };
 #endif //POKEBALL_H
 

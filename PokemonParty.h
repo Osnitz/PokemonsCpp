@@ -9,21 +9,20 @@
 #include "Pokeball.h"
 using std::string;
 
-class PokemonParty{
-private:
-    std::vector<Pokemon*> partyPokemons; // Liste des Pokémon dans la partie
-    Pokeball* pokeball;
+class PokemonParty:SetOfPokemon{
 public:
     PokemonParty()=delete;
-    PokemonParty(const std::vector<int>& id, Pokeball* pokeball);
+    PokemonParty(Pokeball* pokeball);
     PokemonParty(const std::vector<string>& id, Pokeball* pokeball);
-    ~PokemonParty();
+    ~PokemonParty() override;
 
-    /*void addPokemon(int idOrIndex);
-    Pokemon getPokemonByName(const string& name);
-    Pokemon getPokemonById(int index);
-    void removePokemon(int nameOrId);
-    void removeAllPokemon();*/
+    void addPokemon(Pokeball* pokeball);
+    void addPokemon(const string& name, Pokeball* pokeball);
+    Pokemon* getPokemon(const string& name) override;
+    Pokemon* getPokemon(int index) override;
+    void removePokemon(int Id);
+    void removePokemon(const string& name);
+    void removeAllPokemon();
     void displayParty() const;
 };
 #endif //POKEMONPARTY_H

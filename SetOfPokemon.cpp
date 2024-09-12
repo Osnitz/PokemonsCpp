@@ -11,15 +11,15 @@ void SetOfPokemon::displayPokemonList() const {
     }
 }
 
-SetOfPokemon::SetOfPokemon() {
-    std::cout << "Ici le constructeur de SetOfPokemon" << std::endl;
+SetOfPokemon::SetOfPokemon(){
+    //std::cout << "Ici le constructeur de SetOfPokemon" << std::endl;
 }
 
 SetOfPokemon::~SetOfPokemon() {
-    std::cout << "Ici le destructeur de SetOfPokemon" << std::endl;
+    //std::cout << "Ici le destructeur de SetOfPokemon" << std::endl;
 }
 
-int SetOfPokemon::findByName(const string &name) {
+int SetOfPokemon::findPokemon(const string &name) const{
     for (size_t i = 0; i < pokemonList.size(); ++i) {
         if (pokemonList[i]->getName() == name) {
             return i;
@@ -28,7 +28,7 @@ int SetOfPokemon::findByName(const string &name) {
     return -1;
 }
 
-int SetOfPokemon::findById(int id) {
+int SetOfPokemon::findPokemon(int id) const {
     for (size_t i = 0; i < pokemonList.size(); ++i) {
         if (pokemonList[i]->getId() == id) {
             return i;

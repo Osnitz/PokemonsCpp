@@ -6,14 +6,12 @@
 #include <fstream>
 #include <sstream>
 
-//Pokemon charizard(1, "Charizard",100,115,50,1);
-
 Pokedex* Pokedex::instance = nullptr;
 
 Pokedex::Pokedex(const string &fileName){
-    std::cout<< "Pokedex constructor" << std::endl;
-    std::ifstream file(fileName); // Ouvre le file
-    if (!file.is_open()) { // Vérifie si le file est bien ouvert
+    //std::cout<< "Pokedex constructor" << std::endl;
+    std::ifstream file(fileName); // Ouvre le ficher
+    if (!file.is_open()) { // Vérifie si le fichier est bien ouvert
         std::cerr << "Impossible d'ouvrir le file : " << fileName << std::endl;
         return;
     }
@@ -44,18 +42,17 @@ Pokedex::Pokedex(const string &fileName){
         auto* newPokemon = new Pokemon (id,name,healthValue,attackValue,defenseValue,generation);
 
         pokemonList.push_back(newPokemon);
-
-        // Affiche les données de la line
-        /*for (const auto& valeur : linedata) {
-            std::cout << valeur << " "; // Affiche les valeurs séparées par un espace
-        }*/
     }
     file.close(); // Ferme le file
 }
 
 Pokedex::~Pokedex() {
-    std::cout << "Ici le destructeur de pokedex" << std::endl;
+    for (auto pokemon : pokemonList) {
+        delete pokemon;  // Libère la mémoire allouée pour chaque Pokémon
+    }
+    pokemonList.clear();  // Vide le vecteur pour éviter des pointeurs pendants
 }
+
 
 
 Pokedex* Pokedex::GetInstance(const std::string& fileName) {
@@ -65,19 +62,19 @@ Pokedex* Pokedex::GetInstance(const std::string& fileName) {
     return instance;
 }
 
-Pokemon Pokedex::getPokemonById(int id) {
-    int index = findById(id);
+Pokemon *Pokedex::getPokemon(int id) {
+    int index = findPokemon(id);
     if (index != -1) {
-        return *pokemonList.at(index);  // Renvoie une copie du Pokémon
+        return pokemonList.at(index);//renvoie un pointeur
     } else {
         throw std::invalid_argument("Le Pokémon avec l'ID " + std::to_string(id) + " n'existe pas dans le Pokedex.");
     }
 }
 
-Pokemon Pokedex::getPokemonByName(const string& name) {
-    int index = findByName(name);
+Pokemon* Pokedex::getPokemon(const string& name) {
+    int index = findPokemon(name);
     if (index != -1) {
-        return *pokemonList.at(index);  // Renvoie une copie du Pokémon
+        return pokemonList.at(index);
     } else {
         throw std::invalid_argument("Le Pokémon avec le nom " + name + " n'existe pas dans le Pokedex.");
     }

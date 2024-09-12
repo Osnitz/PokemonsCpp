@@ -16,13 +16,14 @@ Pokemon::Pokemon(int id, const string& name, double hitPoint, double attack, dou
 // Constructeur de recopie
 Pokemon::Pokemon(const Pokemon& other)
     : id(other.id), name(other.name), hitPoint(other.hitPoint), attack(other.attack), defense(other.defense), generation(other.generation) {
-    std::cout << "Constructeur de recopie appelé pour " << name << std::endl;
+    //std::cout << "Constructeur de recopie appelé pour " << name << std::endl;
     numberOfPokemon++;
 }
 
 // Destructeur
 Pokemon::~Pokemon() {
-    std::cout << "Ici le destructeur de pokemon appelé pour " << name << std::endl;
+    numberOfPokemon--;
+    //std::cout << "Ici le destructeur de pokemon appelé pour " << name << std::endl;
 }
 
 void Pokemon::displayInfo()const{
@@ -44,39 +45,7 @@ string Pokemon::getName()const {
 int Pokemon::getId()const {
     return id;
 }
-/*double Pokemon::getHitPoint()const {
-    return hitPoint;
-}
-double Pokemon::getAttack() const {
-    return attack;
-}
 
-double Pokemon::getDefense() const {
-    return defense;
-}
-int Pokemon::getGeneration() const {
-    return generation;
-}
-
-
-void Pokemon::setId(int newId) {
-    id = newId;
-}
-void Pokemon::setName(const string &newName) {
-    name = newName;
-}
-void Pokemon::setHitPoint(double newHitPoint) {
-    hitPoint = newHitPoint;
-}
-void Pokemon::setAttack(double newAttack) {
-    attack = newAttack;
-}
-void Pokemon::setDefense(double newDefense) {
-    defense = newDefense;
-}
-void Pokemon::setGeneration(int newGeneration) {
-    generation = newGeneration;
-}**/
 
 void Pokemon::attackAnother(Pokemon& target) const {
     std::cout << name << " attaque " << target.name << std::endl;
