@@ -16,12 +16,16 @@ Pokeball::~Pokeball() {
 };
 
 Pokemon* Pokeball::getPokemon(int id) {
-    for (auto pokemon : pokemonList) {
-        if (pokemon->getId() == id) {
-            return pokemon;
-        }
+    // Recherche les pokemon par index dans la pokeball
+    // Vérifie si l'index id est valide
+    if (id >= 0 && id < pokemonList.size()) {
+        return pokemonList[id];  // Renvoie le Pokémon à l'index id
+    } else {
+        std::cerr << "Erreur : index hors limites." << std::endl;
+        return nullptr;  // Renvoie nullptr si l'index est invalide
     }
 }
+
 
 
 Pokemon* Pokeball::getPokemon(const string& name) {
@@ -110,7 +114,7 @@ std::vector<std::string> Pokeball::selectInPokeball() {
 
     // Afficher la liste des Pokémon dans la Pokéball
     displayPokeballList();
-    std::cout << "Quels Pokémon voulez-vous dans votre party ?" << std::endl;
+    std::cout << "Quels Pokémon voulez-vous ajouter à votre party ?" << std::endl;
 
     std::vector<int> indexs;
     std::string line;

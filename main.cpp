@@ -37,8 +37,8 @@ int main(){
     pokeball.addPokemon(73);
     pokeball.addPokemon(617);
     pokeball.addPokemon(111);
-    ::cout << "Nombre de Pokémon en mémoire : " << Pokemon::getNumberOfPokemon() << std::endl;
-    pokeball.displayPokeballList();
+    //::cout << "Nombre de Pokémon en mémoire : " << Pokemon::getNumberOfPokemon() << std::endl;
+    //pokeball.displayPokeballList();
     ::cout<< "------------------------------------------------"<< endl;
     //pokeball.displayPokeballList();
     //pokeball.aPokemon("Pikachu");

@@ -3,8 +3,13 @@
 #include <strings.h>
 
 PokemonParty::PokemonParty(Pokeball *pokeball) {
-    std::vector<string> names = pokeball->selectInPokeball();
-    if (names.size() <= 6) {
+    // construit la partie avec le premier pokemon dans la pokeball
+    //std::vector<string> names = pokeball->selectInPokeball();
+    auto pokemon = pokeball->getPokemon(0);
+    Pokemon* newPokemon = new Pokemon(*pokemon);
+    pokemonList.push_back(newPokemon);
+    pokeball->removeOneFromPokeball(newPokemon->getName());
+    /*if (names.size() <= 6) {
         for (string name : names) {
             //std::cout << "id = " << id << std::endl;
             auto pokemon = pokeball->getPokemon(name);
@@ -16,7 +21,7 @@ PokemonParty::PokemonParty(Pokeball *pokeball) {
         }
     } else {
         std::cerr << "Trop de Pokémon fournis. La party ne peut contenir que 6 Pokémon." << std::endl;
-    }
+    }*/
 }
 
 PokemonParty::~PokemonParty() {
