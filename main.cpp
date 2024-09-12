@@ -7,7 +7,7 @@
 
 using namespace std;
 
-int main(){
+/*int main(){
     /*Pokemon charizard(1, "Charizard",100,115,50,1);
     charizard.displayInfo();
 
@@ -24,7 +24,7 @@ int main(){
     pikachu->displayInfo();*/
 
     /*Pokemon* bulbasaur = pokedex -> addPokemon(1);
-    bulbasaur->displayInfo();*/
+    bulbasaur->displayInfo();
 
     Pokeball pokeball;
     pokeball.addPokemon(1);
@@ -48,7 +48,7 @@ int main(){
     //pokeball.displayPokeballList();
 
     /*vector<int> ids = {1,2,3,4,5,6};
-    vector<string> names ={"Bulbasaur","Charmander","Pikachu"};*/
+    vector<string> names ={"Bulbasaur","Charmander","Pikachu"};
     PokemonParty party(&pokeball);
     ::cout << "Nombre de Pokémon en mémoire : " << Pokemon::getNumberOfPokemon() << std::endl;
     party.displayParty();
@@ -62,4 +62,17 @@ int main(){
     ::cout << "Nombre de Pokémon en mémoire : " << Pokemon::getNumberOfPokemon() << std::endl;
 
     return 0;
+}*/
+
+#include "Player.h"
+
+int main() {
+    Player player;
+
+    while (true) {
+        player.handleInput();
+        player.update();
+    }
+    return 0;
 }
+

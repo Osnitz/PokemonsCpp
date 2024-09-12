@@ -85,6 +85,18 @@ build CMakeFiles/Exercices.dir/PokemonParty.cpp.o: CXX_COMPILER__Exercices_unsca
   OBJECT_DIR = CMakeFiles/Exercices.dir
   OBJECT_FILE_DIR = CMakeFiles/Exercices.dir
 
+build CMakeFiles/Exercices.dir/Player.cpp.o: CXX_COMPILER__Exercices_unscanned_Debug /home/matthieu/Cours/Exercices/Pokemons/Player.cpp || cmake_object_order_depends_target_Exercices
+  DEP_FILE = CMakeFiles/Exercices.dir/Player.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/Exercices.dir
+  OBJECT_FILE_DIR = CMakeFiles/Exercices.dir
+
+build CMakeFiles/Exercices.dir/States.cpp.o: CXX_COMPILER__Exercices_unscanned_Debug /home/matthieu/Cours/Exercices/Pokemons/States.cpp || cmake_object_order_depends_target_Exercices
+  DEP_FILE = CMakeFiles/Exercices.dir/States.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/Exercices.dir
+  OBJECT_FILE_DIR = CMakeFiles/Exercices.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Exercices
@@ -93,7 +105,7 @@ build CMakeFiles/Exercices.dir/PokemonParty.cpp.o: CXX_COMPILER__Exercices_unsca
 #############################################
 # Link the executable Exercices
 
-build Exercices: CXX_EXECUTABLE_LINKER__Exercices_Debug CMakeFiles/Exercices.dir/main.cpp.o CMakeFiles/Exercices.dir/pokemon.cpp.o CMakeFiles/Exercices.dir/SetOfPokemon.cpp.o CMakeFiles/Exercices.dir/pokedex.cpp.o CMakeFiles/Exercices.dir/Pokeball.cpp.o CMakeFiles/Exercices.dir/PokemonParty.cpp.o
+build Exercices: CXX_EXECUTABLE_LINKER__Exercices_Debug CMakeFiles/Exercices.dir/main.cpp.o CMakeFiles/Exercices.dir/pokemon.cpp.o CMakeFiles/Exercices.dir/SetOfPokemon.cpp.o CMakeFiles/Exercices.dir/pokedex.cpp.o CMakeFiles/Exercices.dir/Pokeball.cpp.o CMakeFiles/Exercices.dir/PokemonParty.cpp.o CMakeFiles/Exercices.dir/Player.cpp.o CMakeFiles/Exercices.dir/States.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/Exercices.dir
   POST_BUILD = :

@@ -13,4 +13,8 @@ add_executable(Exercices main.cpp
         Pokeball.cpp
         Pokeball.h
         PokemonParty.cpp
-        PokemonParty.h)
+        PokemonParty.h
+        Player.cpp
+        Player.h
+        States.cpp
+        States.h)
