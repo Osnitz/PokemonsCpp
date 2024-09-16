@@ -51,6 +51,11 @@ Pokedex::~Pokedex() {
         delete pokemon;  // Libère la mémoire allouée pour chaque Pokémon
     }
     pokemonList.clear();  // Vide le vecteur pour éviter des pointeurs pendants
+
+    if (instance != nullptr) {
+        delete instance;
+        instance = nullptr;
+    }
 }
 
 
@@ -79,3 +84,16 @@ Pokemon* Pokedex::getPokemon(const string& name) {
         throw std::invalid_argument("Le Pokémon avec le nom " + name + " n'existe pas dans le Pokedex.");
     }
 }
+
+Pokemon *Pokedex::getOneRandomPokemon() {
+    std::random_device rd;   // Graine
+    std::mt19937 gen(rd());  // Générateur Mersenne Twister
+    std::uniform_int_distribution<> distrib(0, pokemonList.size() - 1);  // Distribution uniforme entre 0 et pokedexSize-1
+    auto pokemon = pokemonList[distrib(gen)];
+    return pokemon;
+}
+
+int Pokedex::getNumberOfPokemon() {
+    return pokemonList.size();
+}
+

@@ -5,10 +5,10 @@
 PokemonParty::PokemonParty(Pokeball *pokeball) {
     // construit la partie avec le premier pokemon dans la pokeball
     //std::vector<string> names = pokeball->selectInPokeball();
-    auto pokemon = pokeball->getPokemon(0);
+    /*auto pokemon = pokeball->getPokemon(0);
     Pokemon* newPokemon = new Pokemon(*pokemon);
     pokemonList.push_back(newPokemon);
-    pokeball->removeOneFromPokeball(newPokemon->getName());
+    pokeball->removeOneFromPokeball(newPokemon->getName());*/
     /*if (names.size() <= 6) {
         for (string name : names) {
             //std::cout << "id = " << id << std::endl;
@@ -27,7 +27,7 @@ PokemonParty::PokemonParty(Pokeball *pokeball) {
 PokemonParty::~PokemonParty() {
     // Libérer la mémoire de chaque Pokémon dans pokemonList
     for (Pokemon* pokemon : pokemonList) {
-        delete pokemon;  // Libérer chaque Pokémon alloué dynamiquement
+        delete pokemon;
     }
     pokemonList.clear();
 }
@@ -45,14 +45,17 @@ Pokemon* PokemonParty::getPokemon(const string &name) {
             return pokemon;//renvoie un pointeur
         }
     }
+    std::cerr << name << " n'est pas présent dans la party" << std::endl;
+    return nullptr;
 }
 
 Pokemon* PokemonParty::getPokemon(int id) {
-    for(Pokemon* pokemon : pokemonList) {
-        if(pokemon->getId()==id){
-            return pokemon;
-        }
+    // Vérifier si l'index est valide
+    if (id >= 0 && id < pokemonList.size()) {
+        return pokemonList[id];
     }
+    std::cerr << "Index invalide : " << id << std::endl;
+    return nullptr;
 }
 
 void PokemonParty::removePokemon(const std::string& name) {
@@ -64,7 +67,7 @@ void PokemonParty::removePokemon(const std::string& name) {
             delete pokemonList[i];
             pokemonList.erase(pokemonList.begin() + i);
             found = true;
-            break;  // Quitter la boucle après la suppression
+            break;
         }
     }
     if (!found) {
@@ -133,7 +136,7 @@ void PokemonParty::addPokemon(Pokeball* pokeball) {
                         pokeball->removeOneFromPokeball(name);
                         ;
                     } catch (const std::invalid_argument& e) {
-                        std::cout << e.what() << std::endl;  // Afficher l'erreur si le Pokémon n'est pas trouvé
+                        std::cout << e.what() << std::endl;
                     }
                 } else {
                     std::cout << "Aucun Pokémon n'a été ajouté." << std::endl;
@@ -172,13 +175,40 @@ void PokemonParty::addPokemon(const string& name, Pokeball* pokeball) {
                 // Ajouter le nouveau Pokémon après suppression
                 addPokemon(name, pokeball);
             } catch (const std::invalid_argument& e) {
-                std::cout << e.what() << std::endl;  // Afficher l'erreur si le Pokémon n'est pas trouvé
+                std::cout << e.what() << std::endl;
             }
         } else {
             std::cout << "Aucun Pokémon n'a été ajouté." << std::endl;
         }
     }
 }
+
+int PokemonParty::countAlivePokemon() {
+    int aliveCount = 0;
+    for (const auto& pokemon : pokemonList) {
+        if (pokemon->isAlive()) {
+            aliveCount++;
+        }
+    }
+    return aliveCount;
+}
+
+
+void PokemonParty::displayAliveParty() const {
+    std::cout << "Liste des Pokémon encore en vie dans la party pokemon:" << std::endl;
+    for (size_t i = 0; i < pokemonList.size(); ++i) {
+        if (pokemonList.at(i)->isAlive()) {
+            std::cout << i << " : " << pokemonList.at(i)->getName() << std::endl;
+        }
+    }
+}
+
+int PokemonParty::getNumberOfPokemon() {
+    return pokemonList.size();
+}
+
+
+
 
 
 

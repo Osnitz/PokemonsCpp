@@ -34,6 +34,8 @@ Pokemon* Pokeball::getPokemon(const string& name) {
             return pokemon;
         }
     }
+    std::cerr << "Erreur : index hors limites." << std::endl;
+    return nullptr;
 }
 
 void Pokeball::addPokemon(const string& name) {
@@ -54,10 +56,8 @@ void Pokeball::addPokemon(int id) {
 
 void Pokeball::removeAllFromPokeball() {
     for (size_t i = 0; i < pokemonList.size(); ++i) {
-        pokemonList[i];
         //std::cout << ^pokemonList[i]->getName() << " retiré de la Pokeball" << std::endl;
-
-        delete pokemonList[i];  // Libère la mémoire du Pokémon
+        delete pokemonList[i];
     }
     pokemonList.clear();//vide le vecteur
 }
@@ -87,20 +87,6 @@ void Pokeball::removeOneFromPokeball(int id) {
 }
 
 
-
-
-/*void Pokeball::removeFromPokeballByIndex(int index) {
-    if (index < 0 || index >= ^pokemonList.size()) {
-        std::cerr << "Index hors limites" << std::endl;
-        return;
-    }
-    string name = ^pokemonList[index]->getName();
-    delete ^pokemonList[index];  // Libère la mémoire du Pokémon
-    ^pokemonList.erase(^pokemonList.begin() + index);  // Supprime du vecteur
-    std::cout << name << " retiré de la Pokeball" << std::endl;
-}*/
-
-
 void Pokeball::displayPokeballList() const {
     std::cout << "Liste des Pokémon dans la pokeball:" << std::endl;
     for (size_t i = 0; i < pokemonList.size(); ++i) {
@@ -128,13 +114,20 @@ std::vector<std::string> Pokeball::selectInPokeball() {
         indexs.push_back(number);  // Ajouter l'entier au vecteur
     }
 
-    // Assurer que les index sont valides avant d'accéder à pokemonList
     for (int index : indexs) {
-        if (index >= 0 && index < pokemonList.size()) {  // Vérifier que l'index est valide
+        if (index >= 0 && index < pokemonList.size()) {
             names.push_back(pokemonList[index]->getName());
         } else {
             std::cerr << "Index " << index << " est invalide." << std::endl;
         }
     }
     return names;  // Retourner le vecteur des noms
+}
+
+void Pokeball::addPokemon(Pokemon *pokemon) {
+    pokemonList.push_back(pokemon);
+}
+
+int Pokeball::getNumberOfPokemon() {
+    return pokemonList.size();
 }

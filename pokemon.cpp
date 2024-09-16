@@ -46,6 +46,22 @@ int Pokemon::getId()const {
     return id;
 }
 
+int Pokemon::getHitPoint() {
+    return hitPoint;
+}
+
+bool Pokemon::isAlive() {
+    auto hitPoint = getHitPoint();
+    if(hitPoint > 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+
+}
+
+
 
 void Pokemon::attackAnother(Pokemon& target) const {
     std::cout << name << " attaque " << target.name << std::endl;
@@ -58,7 +74,10 @@ void Pokemon::attackAnother(Pokemon& target) const {
     if (target.hitPoint <= 0) {
         std::cout<<target.name<< " est mort"<<std::endl;
     }
-    else{std::cout << " Il reste "<< target.hitPoint<<"poits de vie à "<< target.name<<std::endl;}
+    else {
+        std::cout << " Il reste "<< target.hitPoint<<"points de vie à "<< target.name<<std::endl;
+        std::cout<<std::endl;
+    }
 }
 
 

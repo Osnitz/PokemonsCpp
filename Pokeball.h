@@ -22,6 +22,8 @@ public:
     std::vector<std::string> selectInPokeball();
     void addPokemon(const string& name);
     void addPokemon(int id);
+    void addPokemon(Pokemon* pokemon);
+    int getNumberOfPokemon() override;
 };
 #endif //POKEBALL_H
 

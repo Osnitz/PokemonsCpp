@@ -4,6 +4,7 @@
 #include "Pokeball.h"
 #include <vector>
 #include "PokemonParty.h"
+#include "Player.h"
 
 using namespace std;
 
@@ -15,10 +16,15 @@ using namespace std;
     pikachu.displayInfo();
 
     charizard.attackAnother(pikachu);
-    std::cout <<"Nombre de Pokemon en memoire : " << Pokemon::getNumberOfPokemon() << std::endl;*/
+    std::cout <<"Nombre de Pokemon en memoire : " << Pokemon::getNumberOfPokemon() << std::endl;
 
     // Utilisation du Singleton pour obtenir l'instance du Pokedex
     Pokedex* pokedex = Pokedex::GetInstance("../ressources/pokedex.csv");
+    Pokemon* random = pokedex->getOneRandomPokemon();
+    random->displayInfo();
+    ::cout << "Nombre de Pokémon en mémoire : " << Pokemon::getNumberOfPokemon() << std::endl;
+    delete random;
+    ::cout << "Nombre de Pokémon en mémoire : " << Pokemon::getNumberOfPokemon() << std::endl;
 
     /*Pokemon* pikachu = pokedex -> addPokemon("Pikachu");
     pikachu->displayInfo();*/
@@ -64,15 +70,15 @@ using namespace std;
     return 0;
 }*/
 
-#include "Player.h"
+
 
 int main() {
     Player player;
 
-    while (true) {
+    while (!player.getGameOver()) {
         player.handleInput();
-        player.update();
     }
+    std::cout << "Le jeu est terminé." << std::endl;
     return 0;
 }
 

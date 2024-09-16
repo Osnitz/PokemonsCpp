@@ -28,6 +28,8 @@ public:
     // Méthode abstraite pour récupérer un Pokémon par son nom
     virtual Pokemon* getPokemon(const string &name) = 0;
 
+    virtual int getNumberOfPokemon()=0;
+
 
     // Méthode concrète d'affichage de la liste des Pokémon
     void displayPokemonList() const;

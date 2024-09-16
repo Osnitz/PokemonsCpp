@@ -24,5 +24,8 @@ public:
     void removePokemon(const string& name);
     void removeAllPokemon();
     void displayParty() const;
+    int countAlivePokemon();
+    void displayAliveParty() const;
+    int getNumberOfPokemon() override;
 };
 #endif //POKEMONPARTY_H

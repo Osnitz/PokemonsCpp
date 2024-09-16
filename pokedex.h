@@ -7,6 +7,7 @@
 
 #include <fstream>
 #include "SetOfPokemon.h"
+#include<random>
 
 
 using std::string;
@@ -24,6 +25,9 @@ public:
     static Pokedex *GetInstance(const std::string& value);
     Pokemon* getPokemon(int id) override;
     Pokemon* getPokemon(const string &name) override;
+    Pokemon* getOneRandomPokemon();
+    int getNumberOfPokemon() override;
+
 };
 
 #endif //POKEDEX_H

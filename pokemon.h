@@ -41,6 +41,8 @@ public:
     static int getNumberOfPokemon();
     int getId() const;
     string getName() const;
+    int getHitPoint();
+    bool isAlive();
     /*double getHitPoint() const;
     double getAttack() const;
     double getDefense() const;
